@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">readmekit</span>
+      </div>
+      <div class="header-tag">no api · no login · instant</div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="hero">
+      <p class="hero-eyebrow">open source tool</p>
+      <h1 class="hero-title">Generate your<br><em>README.md</em><br>in seconds.</h1>
+      <p class="hero-sub">Fill in the form below. A production-quality README is built for you — locally, instantly, for free.</p>
+    </section>
+
+    <div class="form-grid">
+
+      <div class="card" id="card-project">
+        <div class="card-label"><span class="card-num">01</span> Project info</div>
+
+        <div class="field">
+          <label for="pname">Project name <span class="req">*</span></label>
+          <input type="text" id="pname" placeholder="e.g. NoteSphere" autocomplete="off" />
+        </div>
+
+        <div class="field">
+          <label for="pdesc">Short description <span class="req">*</span></label>
+          <textarea id="pdesc" rows="3" placeholder="A note-taking app with AI-powered organization and collaboration features..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ptech">Tech stack</label>
+          <input type="text" id="ptech" placeholder="FastAPI, React, PostgreSQL, Docker" autocomplete="off" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="prepo">GitHub repo</label>
+            <input type="text" id="prepo" placeholder="username/repo-name" autocomplete="off" />
+          </div>
+          <div class="field field--sm">
+            <label for="plicense">License</label>
+            <select id="plicense">
+              <option>MIT</option>
+              <option>Apache 2.0</option>
+              <option>GPL v3</option>
+              <option>BSD 3-Clause</option>
+              <option>Proprietary</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="card-content">
+        <div class="card-label"><span class="card-num">02</span> Content</div>
+
+        <div class="field">
+          <label for="pfeatures">Key features <span class="hint">one per line</span></label>
+          <textarea id="pfeatures" rows="4" placeholder="Smart tenant-landlord matching&#10;XGBoost fraud detection&#10;REST API with FastAPI&#10;Real-time recommendations"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="pinstall">Installation steps <span class="hint">optional</span></label>
+          <textarea id="pinstall" rows="3" placeholder="git clone ...&#10;pip install -r requirements.txt&#10;uvicorn main:app"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Sections to include</label>
+          <div class="checkbox-grid">
+            <label class="chk"><input type="checkbox" id="s_badges" checked /><span class="chk-box"></span>Badges</label>
+            <label class="chk"><input type="checkbox" id="s_demo" checked /><span class="chk-box"></span>Demo</label>
+            <label class="chk"><input type="checkbox" id="s_install" checked /><span class="chk-box"></span>Installation</label>
+            <label class="chk"><input type="checkbox" id="s_usage" checked /><span class="chk-box"></span>Usage</label>
+            <label class="chk"><input type="checkbox" id="s_api" /><span class="chk-box"></span>API docs</label>
+            <label class="chk"><input type="checkbox" id="s_contrib" checked /><span class="chk-box"></span>Contributing</label>
+            <label class="chk"><input type="checkbox" id="s_roadmap" /><span class="chk-box"></span>Roadmap</label>
+            <label class="chk"><input type="checkbox" id="s_env" /><span class="chk-box"></span>Env variables</label>
+          </div>
+        </div>
+
+        <button class="gen-btn" id="genbtn">
+          <span class="gen-btn-icon">◈</span>
+          <span class="gen-btn-text">Generate README</span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="output-section" id="output-section">
+      <div class="output-header">
+        <div class="output-title">
+          <span class="output-file">README.md</span>
+          <span class="output-badge" id="line-count"></span>
+        </div>
+        <div class="output-actions">
+          <button class="action-btn" id="tab-raw" onclick="switchTab('raw')">Raw</button>
+          <button class="action-btn active" id="tab-preview" onclick="switchTab('preview')">Preview</button>
+          <div class="action-divider"></div>
+          <button class="action-btn" onclick="copyOut()" id="copy-btn">Copy</button>
+          <button class="action-btn accent" onclick="downloadOut()">↓ Download</button>
+        </div>
+      </div>
+
+      <div class="output-body">
+        <pre id="raw-out"></pre>
+        <div id="prev-out" class="preview-out"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <span>Built with ♥ by a developer for developers</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
